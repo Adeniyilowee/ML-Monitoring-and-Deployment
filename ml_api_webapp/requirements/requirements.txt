@@ -1,0 +1,58 @@
+# -------------- ML requirements
+pytest-cov==5.0.0
+requests>=2
+scikit-learn==1.5.1
+numpy==1.26.0
+pandas==2.2.2
+joblib==1.3.2
+seaborn==0.13.2
+# config parsing
+strictyaml==1.7.3
+ruamel.yaml==0.17.32
+pydantic==1.10.12
+# validation
+marshmallow==3.21.3
+
+
+# ----------- API Set up
+# Web microframework for the API
+flask>=1.1.1,<1.2.0
+connexion[swagger-ui]==2.6.0
+openapi-spec-validator<0.3 # needed for openapi-spec-validator see https://github.com/getmoto/moto/issues/5267
+markupsafe==2.0.1 # https://github.com/aws/aws-sam-cli/issues/3661
+
+# repo maintenance tooling
+black>=19.10b0,<20.0
+flake8==7.1.0
+mypy>=0.740
+tox==4.16.0
+
+# packaging
+setuptools
+wheel
+
+#Logging
+python3-logstash>=0.4.80,<0.5.0
+python-json-logger>=0.1.11,<0.2.0
+
+# ----------- integration test
+# ML Model - only possible to use this for local testing using tox
+# -e ../boosting_model # old model
+
+# ----------- differential tets
+# -e ../bagging_model # newest model
+
+# --------------- shadow mode
+# Persistence, DB
+psycopg2-binary # psycopg2>=2.8.4,<2.9.0  # DB Driver
+alembic>=1.3.1,<1.4.0  # DB Migrations
+sqlalchemy>=1.3.11,<1.4.0  # ORM
+sqlalchemy_utils>=0.36.0,<0.37.0  # DB Utils
+bcrypt
+uuid
+
+# #Metrics
+# prometheus_client>=0.7.1,<0.8.0
+
+# #Deployment
+# gunicorn>=20.0.4,<20.1.0

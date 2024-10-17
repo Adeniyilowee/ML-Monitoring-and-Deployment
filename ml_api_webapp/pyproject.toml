@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+#----
+
+[tool.pytest.ini_options]
+addopts = "--cov=api"
+testpaths = ["tests"]
+pythonpath = "api"
+
+[tool.mypy]
+mypy_path = "api"
+disallow_any_generics = true
+ignore_missing_imports = true
+no_implicit_optional = true
+show_error_codes = true
+strict_equality = true
+warn_return_any = true
+warn_unreachable = true
+no_implicit_reexport = true
+warn_unused_ignores = true
+show_error_context = true
+warn_incomplete_stub = true
+check_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_configs = true
+strict_optional = true

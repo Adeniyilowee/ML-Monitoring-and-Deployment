@@ -1,0 +1,26 @@
+FROM python:3.9.5-slim-buster
+
+RUN mkdir -p /opt/app
+COPY requirements /opt/app/requirements
+RUN pip install --upgrade pip
+
+RUN apt-get update -y && \
+	apt-get install -y make && \
+	apt-get install -y libffi-dev gcc && \
+	# for swagger
+	apt-get install -y curl
+
+RUN pip install -r /opt/app/requirements/requirements.txt
+ENV PYTHONPATH "${PYTHONPATH}:/opt/app/"
+
+WORKDIR /opt/app
+
+COPY . /opt/app
+
+COPY docker/boosting_model /opt/app/boosting_model
+
+RUN pip install -e /opt/app/boosting_model
+
+COPY docker/bagging_model /opt/app/bagging_model
+
+RUN pip install -e /opt/app/bagging_model

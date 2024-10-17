@@ -1,0 +1,32 @@
+services:
+  ml_api_test:
+    image: adeniyi/ml_api:master
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.test
+    environment:
+      DB_HOST: test_database
+      DB_PORT: 5432
+      DB_USER: test_user
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      DB_NAME: ml_api_test
+    depends_on:
+      - test_database
+    ports:
+      - "5002:5000"
+    command: bash -c "make db-migrations && make run-service-development"
+
+  test_database:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ml_api_test
+      # POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "6608:5432"
+    volumes:
+      - my_dbdata_test:/var/lib/postgresql/test_data
+
+volumes:
+  my_dbdata_test:

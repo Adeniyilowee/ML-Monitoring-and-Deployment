@@ -1,0 +1,134 @@
+openapi: 3.0.0
+info:
+  title: Specification for Landslide Prediction Model
+  version: "1"
+
+servers:
+  - url: "http://{base}:5000/"
+    description: API for performing house price predictions.
+    variables:
+      base:
+        default: 0.0.0.0
+
+paths:
+  /:
+    get:
+      operationId: "api.controller.health"
+      responses:
+        "200":
+          description: API Health Status
+
+  /v1/registration:
+    post:
+      operationId: api.controller.registration
+      requestBody:
+        description: Registration of users
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Landslide Predictions
+        "400":
+          description: Bad request, house data validation failed
+        "5XX":
+          description: Unexpected error
+
+  /v1/predictions:
+    post:
+      operationId: api.controller.predict
+      requestBody:
+        description: Geological details used to make Landslide prediction
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/LandslideDetails"
+      responses:
+        "200":
+          description: Landslide Predictions
+        "400":
+          description: Bad request, house data validation failed
+        "5XX":
+          description: Unexpected error
+
+  /v1/predictions/boosting:
+    post:
+      operationId: api.controller.predict_oldmodel
+      requestBody:
+        description: Geological details used to make Landslide prediction
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/LandslideDetails"
+      responses:
+        "200":
+          description: Landslide Predictions
+        "400":
+          description: Bad request, house data validation failed
+        "5XX":
+          description: Unexpected error
+
+  /v1/predictions/bagging:
+    post:
+      operationId: "api.controller.predict_newmodel"
+      requestBody:
+        description: Geological details used to make Landslide prediction
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/LandslideDetails"
+      responses:
+        "200":
+          description: Landslide Predictions
+        "400":
+          description: Bad request, house data validation failed
+        "5XX":
+          description: Unexpected error
+
+components:
+  schemas:
+    LandslideDetails:
+      type: object
+      description: "List of variables get predictions for landslide"
+      example:
+        STREAM_DIST: 0.0
+        BASE_AREA: 5068000.0
+        BASIN: 17.0
+        CURVATURE: 10.356565
+        CURVE_CONT: 12.588444
+        CURVE_PROF: 7.318981
+        CURVES: 0.1134298
+        DROP: 16.66667
+        ROCK_DIST: 0.0
+        FLOW_DIR: 8.0
+        FOS: 1.166745
+        ELEVATION: 1031.3
+        COHESION: 10.0
+        SCARP_DIST: 40.0
+        SCARPS: 0
+        FRICTION_ANGLE: 17.0
+        SLOPE: 9.759456
+        SLOPE_LEG: 400.8319
+        WOODS: 1
+        SPECIFIC_WT: 20.0
+    User:
+      type: object
+      description: "User information"
+      example:
+        user_id: "88b8738dex3"
+        username: "lowee"
+        email: "mosaku@dkrz.de"
+        password: "zoomsoom"

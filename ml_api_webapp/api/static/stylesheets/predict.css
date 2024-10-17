@@ -1,0 +1,108 @@
+/* Background */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background-predict.jpg');
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Glassmorphic Container */
+.glass-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.predict-box {
+    color: #fff;
+}
+
+.predict-box h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Input File */
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #333;
+}
+
+/* Button */
+button[type="submit"] {
+    background-color: #0072ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #005bb5;
+}
+
+/* Download Link */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.flash-message {
+    background-color: rgba(162, 175, 15, 0.745);
+    color: white;
+    padding: 2px 2px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: center;
+    animation: fadein 1.1s ease-in-out;
+    /* Animation to fade in and out */
+}
+
+.flashy {
+    font-size: 12px;
+    color: #fff;
+    font-weight: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
