@@ -1,0 +1,6 @@
+[submodule "bagging_model"]
+	path = bagging_model
+	url = https://github.com/Adeniyilowee/ML-Testing-and-Monitoring
+[submodule "boosting_model"]
+	path = boosting_model
+	url = https://github.com/Adeniyilowee/ML-Testing-and-Monitoring-2
